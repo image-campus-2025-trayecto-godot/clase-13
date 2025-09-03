@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwy4i1j0q1i1q"]
+
+[ext_resource type="Script" uid="uid://dvfhlhdxx28iq" path="res://scenes/ring/combat.gd" id="1_3gq6w"]
+[ext_resource type="Texture2D" uid="uid://bq03k4e4pqt4m" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_18txc"]
+[ext_resource type="PackedScene" uid="uid://cnrm10gcbs132" path="res://ui/controls.tscn" id="2_51e1t"]
+[ext_resource type="PackedScene" uid="uid://c1eengq4x1mlm" path="res://scenes/opponent/opponent.tscn" id="2_n35nm"]
+[ext_resource type="PackedScene" uid="uid://duooxx78nvwdq" path="res://scenes/player/player.tscn" id="2_ygikk"]
+[ext_resource type="Script" uid="uid://bu4vr7rc7d61b" path="res://ui/health_bar.gd" id="6_2gbiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvslj"]
+atlas = ExtResource("1_18txc")
+region = Rect2(972, 668, 256, 225)
+
+[sub_resource type="Gradient" id="Gradient_2gbiu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r4a60"]
+gradient = SubResource("Gradient_2gbiu")
+
+[sub_resource type="Gradient" id="Gradient_qmsse"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8mkae"]
+gradient = SubResource("Gradient_qmsse")
+
+[sub_resource type="Gradient" id="Gradient_3gq6w"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4tlej"]
+gradient = SubResource("Gradient_3gq6w")
+
+[node name="Ring" type="Node2D"]
+texture_filter = 1
+
+[node name="Combat" type="Node2D" parent="." node_paths=PackedStringArray("player", "opponent")]
+script = ExtResource("1_3gq6w")
+player = NodePath("../Player")
+opponent = NodePath("../Opponent")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_rvslj")
+centered = false
+
+[node name="Opponent" parent="." instance=ExtResource("2_n35nm")]
+position = Vector2(295, 169)
+
+[node name="Player" parent="." instance=ExtResource("2_ygikk")]
+position = Vector2(326, 441)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OpponentHealthBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("boxer")]
+offset_left = 261.0
+offset_top = 147.0
+offset_right = 487.0
+offset_bottom = 170.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_r4a60")
+texture_progress = SubResource("GradientTexture2D_8mkae")
+script = ExtResource("6_2gbiu")
+boxer = NodePath("../../Opponent")
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("boxer")]
+offset_left = 261.0
+offset_top = 638.0
+offset_right = 487.0
+offset_bottom = 661.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_r4a60")
+texture_progress = SubResource("GradientTexture2D_4tlej")
+script = ExtResource("6_2gbiu")
+boxer = NodePath("../../Player")
+
+[node name="Controls" parent="CanvasLayer" instance=ExtResource("2_51e1t")]

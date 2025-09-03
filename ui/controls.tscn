@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnrm10gcbs132"]
+
+[ext_resource type="Texture2D" uid="uid://bka5xva1hsydy" path="res://assets/kenney_input-prompts-pixel-16/Tilemap/tilemap.png" id="1_3bxso"]
+[ext_resource type="Script" uid="uid://bcv1s86baapj8" path="res://scenes/ring/key_hint.gd" id="2_ob35n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4a60"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3bxso")
+region = Rect2(290, 171, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gq6w"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3bxso")
+region = Rect2(324, 171, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygikk"]
+atlas = ExtResource("1_3bxso")
+region = Rect2(307, 188, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n35nm"]
+atlas = ExtResource("1_3bxso")
+region = Rect2(341, 188, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gbiu"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3bxso")
+region = Rect2(307, 171, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tlej"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3bxso")
+region = Rect2(324, 188, 13, 14)
+
+[node name="Controls" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 264.0
+offset_right = 70.0
+offset_bottom = 368.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Punch" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "PUNCH"
+
+[node name="Q" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_r4a60")
+expand_mode = 3
+script = ExtResource("2_ob35n")
+action_name = &"punch_left"
+
+[node name="E" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_3gq6w")
+expand_mode = 3
+script = ExtResource("2_ob35n")
+action_name = &"punch_right"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Dodge" type="Label" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "DODGE"
+
+[node name="A" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ygikk")
+script = ExtResource("2_ob35n")
+action_name = &"dodge_left"
+
+[node name="D" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_n35nm")
+script = ExtResource("2_ob35n")
+action_name = &"dodge_right"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Block" type="Label" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "BLOCK"
+
+[node name="W" type="TextureRect" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_2gbiu")
+script = ExtResource("2_ob35n")
+action_name = &"block"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Duck" type="Label" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "DUCK"
+
+[node name="S" type="TextureRect" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = SubResource("AtlasTexture_4tlej")
+script = ExtResource("2_ob35n")
+action_name = &"duck"
