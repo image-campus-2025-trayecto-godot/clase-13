@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://c1eengq4x1mlm"]
 
 [ext_resource type="Script" uid="uid://fpmuvl3ktw50" path="res://scenes/opponent/opponent.gd" id="1_kajev"]
-[ext_resource type="Texture2D" uid="uid://bq03k4e4pqt4m" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_td1ji"]
+[ext_resource type="Texture2D" uid="uid://ds16qxf5d7u3o" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_td1ji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmsse"]
 atlas = ExtResource("1_td1ji")
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qmsse")
 }],
-"loop": true,
+"loop": false,
 "name": &"anticipate_punch",
 "speed": 5.0
 }, {
@@ -147,12 +147,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8mkae")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wwh11")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2c0h")
 }],
 "loop": true,
 "name": &"punch",
@@ -166,6 +160,13 @@ script = ExtResource("1_kajev")
 position = Vector2(-1, -6)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_r4a60")
-animation = &"idle"
+animation = &"anticipate_punch"
 autoplay = "idle"
+frame_progress = 1.0
 centered = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

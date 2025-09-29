@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@export var boxer: Node2D
+@export var boxer: Boxer
 
 func _ready():
 	max_value = boxer.health
@@ -9,4 +9,3 @@ func _ready():
 
 func on_health_changed(new_health):
 	value = new_health
-	print(value)
