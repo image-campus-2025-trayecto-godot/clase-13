@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dwy4i1j0q1i1q"]
 
 [ext_resource type="Script" uid="uid://dvfhlhdxx28iq" path="res://scenes/ring/combat.gd" id="1_3gq6w"]
-[ext_resource type="Texture2D" uid="uid://bq03k4e4pqt4m" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_18txc"]
+[ext_resource type="Texture2D" uid="uid://ds16qxf5d7u3o" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_18txc"]
 [ext_resource type="PackedScene" uid="uid://cnrm10gcbs132" path="res://ui/controls.tscn" id="2_51e1t"]
 [ext_resource type="PackedScene" uid="uid://c1eengq4x1mlm" path="res://scenes/opponent/opponent.tscn" id="2_n35nm"]
 [ext_resource type="PackedScene" uid="uid://duooxx78nvwdq" path="res://scenes/player/player.tscn" id="2_ygikk"]

@@ -2,24 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bpps86q4c2dvy"
-valid=false
-=======
-uid="uid://bq03k4e4pqt4m"
+uid="uid://ds16qxf5d7u3o"
 path="res://.godot/imported/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png-097496af32392bfbf2f989db626c8215.ctex"
 metadata={
 "vram_texture": false
 }
->>>>>>> 3aebab5 (Codigo final clase 8)
 
 [deps]
 
 source_file="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png"
-<<<<<<< HEAD
-=======
 dest_files=["res://.godot/imported/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png-097496af32392bfbf2f989db626c8215.ctex"]
->>>>>>> 3aebab5 (Codigo final clase 8)
 
 [params]
 
