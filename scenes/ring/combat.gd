@@ -6,7 +6,7 @@ enum Direction {
 	Right
 }
 
-@export var player: Player
+@export var player: Boxer
 @export var opponent: Opponent
 
 func _ready():

@@ -14,61 +14,69 @@ enum PlayerState {
 	Hurt
 }
 var state = PlayerState.Idle
+var state_data: Dictionary[PlayerState, Dictionary] = {}
 
 func is_defeated():
 	return PlayerState.Defeated == state 
-	
-func defeat():
-	state = PlayerState.Defeated
+
+func change_state(new_state, data = {}):
+	state = new_state
+	state_data[state] = data
+	on_enter_state(data)
 
 func _process(delta: float) -> void:
-	if is_defeated():
-		return
-	if PlayerState.Dodging == state:
-		dodge_time_left = move_toward(dodge_time_left, 0.0, delta)
-		if dodge_time_left <= 0.0:
-			state = PlayerState.Idle
+	process_state(delta)
+
+func on_enter_state(data):
+	match state:
+		PlayerState.Dodging:
+			dodge_time_left = dodge_time
+			animated_sprite_2d.position.x = -50 if Combat.Direction.Left == data.direction else 50
+			animated_sprite_2d.flip_h = data.direction == Combat.Direction.Left
+		PlayerState.Punching:
+			punched_at.emit(data.direction)
+			animated_sprite_2d.flip_h = data.direction == Combat.Direction.Left
+
+func process_state(delta):
+	match state:
+		PlayerState.Idle:
 			animated_sprite_2d.play("idle")
-			animated_sprite_2d.position.x = 0
-			animated_sprite_2d.flip_h = false
-	if Input.is_action_pressed("block"):
-		print("BLOCK")
+		PlayerState.Defeated:
+			animated_sprite_2d.play("defeated")
+		PlayerState.Blocking:
+			animated_sprite_2d.play("block")
+		PlayerState.Ducking:
+			animated_sprite_2d.play("duck")
+		PlayerState.Hurt:
+			animated_sprite_2d.play("hit")
+		PlayerState.Dodging:
+			animated_sprite_2d.play("dodge")
+			dodge_time_left = move_toward(dodge_time_left, 0.0, delta)
+			if dodge_time_left <= 0.0:
+				change_state(PlayerState.Idle)
+			if Input.is_action_just_pressed("punch_left"):
+				change_state(PlayerState.Punching, { "direction": Combat.Direction.Left })
+			if Input.is_action_just_pressed("punch_right"):
+				change_state(PlayerState.Punching, { "direction": Combat.Direction.Right })
+		PlayerState.Punching:
+			animated_sprite_2d.play("punch")
+	if state != PlayerState.Dodging:
 		animated_sprite_2d.position.x = 0
-		animated_sprite_2d.play("block")
-	if Input.is_action_just_pressed("dodge_left"):
-		print("DODGE LEFT")
-		state = PlayerState.Dodging
-		dodge_time_left = dodge_time
-		animated_sprite_2d.play("dodge")
-		animated_sprite_2d.position.x = -50
-		animated_sprite_2d.flip_h = true
-	if Input.is_action_just_pressed("dodge_right"):
-		print("DODGE RIGHT")
-		state = PlayerState.Dodging
-		dodge_time_left = dodge_time
-		animated_sprite_2d.play("dodge")
-		animated_sprite_2d.position.x = 50
+	if state != PlayerState.Dodging && state != PlayerState.Punching:
 		animated_sprite_2d.flip_h = false
-	if Input.is_action_just_pressed("punch_left"):
-		print("PUNCH LEFT")
-		state = PlayerState.Punching
-		animated_sprite_2d.play("punch")
-		animated_sprite_2d.position.x = 0
-		animated_sprite_2d.flip_h = true
-		punched_at.emit(Combat.Direction.Left)
-	if Input.is_action_just_pressed("punch_right"):
-		print("PUNCH RIGHT")
-		state = PlayerState.Punching
-		animated_sprite_2d.play("punch")
-		animated_sprite_2d.position.x = 0
-		animated_sprite_2d.flip_h = false
-		punched_at.emit(Combat.Direction.Right)
-	if Input.is_action_pressed("duck"):
-		print("DUCK")
-		state = PlayerState.Ducking
-		animated_sprite_2d.play("duck")
-		animated_sprite_2d.position.x = 0
-		animated_sprite_2d.flip_h = false
+	if state != PlayerState.Defeated && state != PlayerState.Dodging:
+		if Input.is_action_pressed("block"):
+			change_state(PlayerState.Blocking)
+		if Input.is_action_just_pressed("dodge_left"):
+			change_state(PlayerState.Dodging, { "direction": Combat.Direction.Left })
+		if Input.is_action_just_pressed("dodge_right"):
+			change_state(PlayerState.Dodging, { "direction": Combat.Direction.Right })
+		if Input.is_action_just_pressed("punch_left"):
+			change_state(PlayerState.Punching, { "direction": Combat.Direction.Left })
+		if Input.is_action_just_pressed("punch_right"):
+			change_state(PlayerState.Punching, { "direction": Combat.Direction.Right })
+		if Input.is_action_pressed("duck"):
+			change_state(PlayerState.Ducking)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -76,6 +84,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		return
 	if PlayerState.Dodging == state:
 		return
-	animated_sprite_2d.play("idle")
-	animated_sprite_2d.position.x = 0
+	change_state(PlayerState.Idle)
 	animated_sprite_2d.flip_h = false

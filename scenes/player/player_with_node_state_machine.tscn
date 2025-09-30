@@ -1,0 +1,177 @@
+[gd_scene load_steps=25 format=3 uid="uid://dogsla4r2f6ls"]
+
+[ext_resource type="Script" uid="uid://caw8yior7f4wn" path="res://scenes/player/player_with_node_state_machine.gd" id="1_lby5w"]
+[ext_resource type="Texture2D" uid="uid://ds16qxf5d7u3o" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="2_7nir7"]
+[ext_resource type="Script" uid="uid://ctuysdpyfy5fv" path="res://scenes/player/player_animated_sprite_2d.gd" id="3_m2xg2"]
+[ext_resource type="Script" uid="uid://b77xjqtkn0dqf" path="res://scenes/player/state_machine.gd" id="4_7nir7"]
+[ext_resource type="Script" uid="uid://doobc7rhep8tk" path="res://scenes/player/states/idle.gd" id="5_m2xg2"]
+[ext_resource type="Script" uid="uid://njthap3g5nqy" path="res://scenes/player/states/dodging.gd" id="6_ces0e"]
+[ext_resource type="Script" uid="uid://bo4gpny6wdcnv" path="res://scenes/player/states/punching.gd" id="7_14gu2"]
+[ext_resource type="Script" uid="uid://bkh3rrr3fkxv8" path="res://scenes/player/hit.gd" id="8_74dqv"]
+[ext_resource type="Script" uid="uid://bnhkqykvoqoov" path="res://scenes/player/block.gd" id="9_a57nr"]
+[ext_resource type="Script" uid="uid://0m7jjrv4fgv5" path="res://scenes/player/defeated.gd" id="10_78llm"]
+[ext_resource type="Script" uid="uid://c6eq15ksiospd" path="res://scenes/player/duck.gd" id="11_b0iiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(374, 102, 25, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(307, 256, 54, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(361, 256, 54, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(469, 256, 54, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(415, 256, 54, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(100, 99, 25, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(125, 99, 25, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(399, 102, 25, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(283, 100, 27, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8afob"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(0, 26, 25, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(25, 26, 25, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = ExtResource("2_7nir7")
+region = Rect2(375, 0, 25, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ces0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}],
+"loop": false,
+"name": &"block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}],
+"loop": false,
+"name": &"defeated",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}],
+"loop": true,
+"name": &"dodge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}],
+"loop": false,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8afob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dovo2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 5.0
+}]
+
+[node name="PlayerWithNodeStateMachine" type="Node2D"]
+script = ExtResource("1_lby5w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ces0e")
+animation = &"block"
+autoplay = "idle"
+centered = false
+script = ExtResource("3_m2xg2")
+animation_offset = Dictionary[StringName, Vector2]({
+&"punch": Vector2(0, -25)
+})
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("state", "player")]
+script = ExtResource("4_7nir7")
+state = NodePath("Idle")
+player = NodePath("..")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_m2xg2")
+
+[node name="Dodging" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_ces0e")
+
+[node name="Punching" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_14gu2")
+
+[node name="Hurt" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_74dqv")
+
+[node name="Block" type="Node2D" parent="StateMachine"]
+script = ExtResource("9_a57nr")
+
+[node name="Defeated" type="Node2D" parent="StateMachine"]
+script = ExtResource("10_78llm")
+
+[node name="Duck" type="Node2D" parent="StateMachine"]
+script = ExtResource("11_b0iiv")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

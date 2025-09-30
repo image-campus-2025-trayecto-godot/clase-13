@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ds16qxf5d7u3o" path="res://assets/Custom _ Edited - Punch-Out!! Customs - Little Mac - Head-to-Head Mode (NES-Style).png" id="1_18txc"]
 [ext_resource type="PackedScene" uid="uid://cnrm10gcbs132" path="res://ui/controls.tscn" id="2_51e1t"]
 [ext_resource type="PackedScene" uid="uid://c1eengq4x1mlm" path="res://scenes/opponent/opponent.tscn" id="2_n35nm"]
-[ext_resource type="PackedScene" uid="uid://duooxx78nvwdq" path="res://scenes/player/player.tscn" id="2_ygikk"]
 [ext_resource type="Script" uid="uid://bu4vr7rc7d61b" path="res://ui/health_bar.gd" id="6_2gbiu"]
+[ext_resource type="PackedScene" uid="uid://dogsla4r2f6ls" path="res://scenes/player/player_with_node_state_machine.tscn" id="6_4tlej"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvslj"]
 atlas = ExtResource("1_18txc")
@@ -37,7 +37,7 @@ texture_filter = 1
 
 [node name="Combat" type="Node2D" parent="." node_paths=PackedStringArray("player", "opponent")]
 script = ExtResource("1_3gq6w")
-player = NodePath("../Player")
+player = NodePath("../PlayerWithNodeStateMachine")
 opponent = NodePath("../Opponent")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -48,8 +48,8 @@ centered = false
 [node name="Opponent" parent="." instance=ExtResource("2_n35nm")]
 position = Vector2(295, 169)
 
-[node name="Player" parent="." instance=ExtResource("2_ygikk")]
-position = Vector2(326, 441)
+[node name="PlayerWithNodeStateMachine" parent="." instance=ExtResource("6_4tlej")]
+position = Vector2(339, 433)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -73,6 +73,6 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_r4a60")
 texture_progress = SubResource("GradientTexture2D_4tlej")
 script = ExtResource("6_2gbiu")
-boxer = NodePath("../../Player")
+boxer = NodePath("../../PlayerWithNodeStateMachine")
 
 [node name="Controls" parent="CanvasLayer" instance=ExtResource("2_51e1t")]

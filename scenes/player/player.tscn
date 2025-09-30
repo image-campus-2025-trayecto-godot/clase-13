@@ -129,13 +129,14 @@ animations = [{
 [node name="Player" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_gmlin")
+dodge_time = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_gmlin")
-animation = &"dodge"
+animation = &"block"
 autoplay = "idle"
-frame_progress = 0.758673
+frame_progress = 1.0
 centered = false
 script = ExtResource("2_dovo2")
 animation_offset = Dictionary[StringName, Vector2]({
