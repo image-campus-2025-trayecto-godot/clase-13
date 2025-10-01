@@ -1,7 +1,7 @@
 @tool
 class_name ReproductorDeDiapositivas extends Control
 
-const DIAPOSITIVAS_PATH = "res://addons/slides/diapositivas.tscn"
+const DIAPOSITIVAS_PATH = "res://diapositivas/diapositivas.tscn"
 
 var diapositivas
 var diapositiva_actual: int :

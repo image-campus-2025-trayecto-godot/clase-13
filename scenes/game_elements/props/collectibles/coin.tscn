@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccthvicn4jwnw"]
+
+[ext_resource type="Script" uid="uid://c6dkalfamax88" path="res://scenes/game_elements/props/collectibles/coin_with_collected_effect.gd" id="1_h6jfl"]
+[ext_resource type="Texture2D" uid="uid://dsi8qn7hv6sd1" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/coin_gold.png" id="2_h6jfl"]
+[ext_resource type="Texture2D" uid="uid://b4c5tj0w82cvx" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/coin_gold_side.png" id="3_h6jfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fleup"]
+radius = 21.095
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_867vd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h6jfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h6jfl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Coin" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_h6jfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fleup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_867vd")
+autoplay = "default"
+frame_progress = 0.149452

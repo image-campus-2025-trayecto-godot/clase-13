@@ -1,7 +1,7 @@
 @tool
 extends EditorPlugin
 
-const DIAPOSITIVAS = preload("res://addons/slides/diapositivas.tscn")
+const DIAPOSITIVAS = preload("res://diapositivas/diapositivas.tscn")
 const CONTROLES_DE_PRESENTADOR = preload("res://addons/slides/controles-de-presentador/controles_de_presentador.tscn")
 
 var controles_de_presentador

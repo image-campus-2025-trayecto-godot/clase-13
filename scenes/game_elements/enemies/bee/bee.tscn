@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjfedcnod35or"]
+
+[ext_resource type="Texture2D" uid="uid://c223qecbd62or" path="res://assets/kenney_new-platformer-pack-1.0/Spritesheets/spritesheet-enemies-default.png" id="2_4su50"]
+[ext_resource type="Script" uid="uid://ctejc6a0o1kj2" path="res://scenes/game_elements/enemies/hit_player_area.gd" id="2_32l7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32l7c"]
+atlas = ExtResource("2_4su50")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhvys"]
+atlas = ExtResource("2_4su50")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4wkf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32l7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhvys")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6sfn"]
+size = Vector2(32, 17)
+
+[node name="Bee" type="Node2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_t4wkf")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.701989
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-3, -23)
+collision_layer = 0
+script = ExtResource("2_32l7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_a6sfn")

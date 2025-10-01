@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hvmwyl7vw3k"]
+
+[ext_resource type="Script" uid="uid://dndp1tyffx2aw" path="res://globals/game_state.gd" id="1_3la4p"]
+[ext_resource type="AudioStream" uid="uid://bwgcp5mbto846" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_hurt.ogg" id="2_xgm28"]
+
+[node name="GameState" type="Node2D"]
+script = ExtResource("1_3la4p")
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xgm28")
+bus = &"SFX"

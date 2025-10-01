@@ -4,6 +4,9 @@ extends CanvasItem
 var diapositiva_actual: int : set = cambiar_diapositiva
 var _controles_de_presentador
 
+@export_tool_button("Reproducir")
+var _reproducir = reproducir
+
 @export_tool_button("Avanzar")
 var _avanzar = avanzar
 
@@ -113,6 +116,8 @@ func avanzar():
 func retroceder():
 	cambiar_diapositiva(diapositiva_actual - 1)
 
+func reproducir():
+	EditorInterface.get_base_control().get_tree().root.find_child("*ControlesDePresentador*", true, false).on_toggle_slides()
 
 func _physics_process(delta):
 	if is_inside_tree() and get_tree().edited_scene_root == self:
