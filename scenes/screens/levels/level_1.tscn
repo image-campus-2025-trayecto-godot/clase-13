@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b1erjy2mxqyq7"]
+[gd_scene load_steps=24 format=4 uid="uid://b1erjy2mxqyq7"]
 
 [ext_resource type="TileSet" uid="uid://ctnwo4buwnx26" path="res://resources/tileset.tres" id="1_dga24"]
 [ext_resource type="PackedScene" uid="uid://dv171qrn86w2b" path="res://scenes/game_elements/player/player.tscn" id="2_qxy0u"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://di0g81ntson6w" path="res://assets/kenney_ui-pack/PNG/Green/Double/check_square_color.png" id="9_8x6bd"]
 [ext_resource type="Script" uid="uid://bl0x51ela1pis" path="res://scenes/hud/scoreboard.gd" id="9_bahl2"]
 [ext_resource type="Script" uid="uid://drppbkggkkh4n" path="res://scenes/screens/levels/next_level_button.gd" id="11_1wscj"]
+[ext_resource type="PackedScene" uid="uid://gsbmk62yot3q" path="res://scenes/ui/Pause.tscn" id="12_dr4h5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y21ji"]
 
@@ -188,10 +189,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 497.0
-offset_bottom = 71.0
+offset_left = 755.0
+offset_top = -124.0
+offset_right = 1256.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("8_mbm35")
@@ -207,6 +208,8 @@ script = ExtResource("11_1wscj")
 libraries = {
 &"": SubResource("AnimationLibrary_upv3b")
 }
+
+[node name="Pause" parent="HUD" instance=ExtResource("12_dr4h5")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

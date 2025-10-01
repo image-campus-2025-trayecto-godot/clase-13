@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://ntw0b6vim6ll"]
+[gd_scene load_steps=25 format=4 uid="uid://ntw0b6vim6ll"]
 
 [ext_resource type="TileSet" uid="uid://ctnwo4buwnx26" path="res://resources/tileset.tres" id="1_8i2da"]
 [ext_resource type="PackedScene" uid="uid://dv171qrn86w2b" path="res://scenes/game_elements/player/player.tscn" id="2_dp6wk"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://de4r4kud4jx8c" path="res://assets/kenney_ui-pack/Font/Kenney Future.ttf" id="9_7kvpb"]
 [ext_resource type="Texture2D" uid="uid://di0g81ntson6w" path="res://assets/kenney_ui-pack/PNG/Green/Double/check_square_color.png" id="10_3jum3"]
 [ext_resource type="Script" uid="uid://drppbkggkkh4n" path="res://scenes/screens/levels/next_level_button.gd" id="11_v6onk"]
+[ext_resource type="PackedScene" uid="uid://gsbmk62yot3q" path="res://scenes/ui/Pause.tscn" id="12_bfti1"]
 [ext_resource type="Texture2D" uid="uid://derwm17wl2owb" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Backgrounds/Double/background_color_hills.png" id="12_ic0jq"]
 [ext_resource type="Texture2D" uid="uid://c0ukamgf88x00" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Backgrounds/Double/background_color_trees.png" id="13_ekf6h"]
 [ext_resource type="AudioStream" uid="uid://cx7ndrfursge8" path="res://assets/brackeys_platformer_assets/music/time_for_adventure.mp3" id="14_dp6wk"]
@@ -211,6 +212,8 @@ script = ExtResource("11_v6onk")
 libraries = {
 &"": SubResource("AnimationLibrary_upv3b")
 }
+
+[node name="Pause" parent="HUD" instance=ExtResource("12_bfti1")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

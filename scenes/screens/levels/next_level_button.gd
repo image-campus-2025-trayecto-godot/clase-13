@@ -1,4 +1,4 @@
 extends Button
 
 func _pressed() -> void:
-	pass # ???
+	LevelManager.go_to_next_level()

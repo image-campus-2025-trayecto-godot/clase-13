@@ -103,10 +103,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_rsqhl")
-diapositiva_actual = 0
+diapositiva_actual = 2
 metadata/_edit_lock_ = true
 
 [node name="EjemploTitulo" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,7 +255,6 @@ text = "- Recursos y nodos
 label_settings = ExtResource("9_a7dwd")
 
 [node name="Nodos y recursos" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

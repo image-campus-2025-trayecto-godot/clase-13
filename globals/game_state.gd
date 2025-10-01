@@ -7,6 +7,9 @@ var lost: bool = false
 var won: bool = false
 var score: int = 0
 
+func _ready():
+	LevelManager.level_changed.connect(func(_level): self.reset_state())
+
 func add_score(amount: int) -> void:
 	score += amount
 	score_changed.emit(score)
@@ -25,7 +28,7 @@ func reset_state():
 
 func reset_level():
 	reset_state()
-	get_tree().reload_current_scene()
+	LevelManager.reload_level()
 
 func win():
 	won = true
