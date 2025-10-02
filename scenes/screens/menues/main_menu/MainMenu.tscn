@@ -2,9 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://2apcpj33yihk" path="res://resources/menu_theme.tres" id="1_1cse4"]
 [ext_resource type="Script" uid="uid://ge257midqy47" path="res://scenes/screens/menues/main_menu/main_menu.gd" id="2_3fwpi"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_kw4ad"]
-font_size = 50
+[ext_resource type="LabelSettings" uid="uid://du41jbexb83sb" path="res://resources/title_label_settings.tres" id="3_os1jm"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -28,7 +26,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "THE GAME"
-label_settings = SubResource("LabelSettings_kw4ad")
+label_settings = ExtResource("3_os1jm")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -42,6 +40,16 @@ theme_override_constants/separation = 30
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+
+[node name="SelectLevel" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select level"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

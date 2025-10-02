@@ -6,3 +6,4 @@
 default_font = ExtResource("1_muft2")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 40
+Label/font_sizes/font_size = 40

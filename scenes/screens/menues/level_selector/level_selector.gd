@@ -14,4 +14,6 @@ func _ready() -> void:
 		button.pressed.connect(func():
 			LevelManager.go_to_level(level_path)
 		)
+		if level_number == 1:
+			button.grab_focus()
 		level_number += 1
